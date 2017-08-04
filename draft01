@@ -1,0 +1,375 @@
+String myText="Let's Start the Adventure of Wizard ";
+
+int stage=0;
+PImage fire;
+PImage owl;
+PImage unicorn;
+PImage bat;
+PImage beaver;
+PImage bkgrd;
+float fireSpeed1=1;
+float fireSpeed2=-1;
+float fireSpeed3=0.5;
+float fireSpeed4=-0.6;
+float fireSpeed5=0.3;
+float fireSpeed6=-0.2;
+float fireSpeed7=0.2;
+float fireSpeed8=-0.7;
+float fireSpeed9=0.3;
+float fireSpeed10=-0.1;
+float fireplus;
+float fireplusmini;
+PImage graduation;
+PImage testTube;
+PImage transparency;
+PImage potion;
+PImage bkgrdbeaver;
+PImage bkgrdowl;
+PImage bkgrdunicorn;
+PImage bkgrdbat;
+PImage flame;
+PImage wizard;
+PImage stage10;
+PImage stage6;
+PImage stage7;
+PImage stage8;
+PImage stage9;
+PImage stage11;
+int speed;
+int a;
+PFont font1;
+import ddf.minim.*;
+AudioPlayer player;
+AudioPlayer sound;
+Minim minim;
+
+//int[] PosX;
+//int[] PosY;
+
+void setup() {
+  size(800, 800);
+  background(255);
+  textAlign(CENTER, CENTER);
+  //font1=loadFont("CupolaUnicodeLightItalic-48.vlw");
+  // textFont(font1);
+  textSize(30);
+  fill(0);
+
+  //  fire=loadImage(#);
+  //PosX = new int[6];
+  //PosY = new int[6];
+  font1=loadFont("HannotateTC-W7-48.vlw");
+  textFont(font1);
+  graduation=loadImage("graduation01.png");
+  testTube=loadImage("transparency01.png");
+  transparency=loadImage("transparency01.png");
+  potion=loadImage("potion01.png");
+  beaver=loadImage("beaver.png");
+  bat=loadImage("bat.png");
+  unicorn=loadImage("unicorn.png");
+  owl=loadImage("owl.png");
+  bkgrd=loadImage("bkgrd.png");
+  bkgrdbat=loadImage("bkgrdbat.png");
+  bkgrdunicorn=loadImage("bkgrdunicorn.png");
+  bkgrdowl=loadImage("bkgrdowl.png");
+  bkgrdbeaver=loadImage("bkgrdbeaver.png");
+  flame=loadImage("flame.png");
+  wizard=loadImage("wizard.png");
+  stage10=loadImage("stage10.png");
+  stage6=loadImage("stage6.png");
+  stage7=loadImage("stage7.png");
+  stage8=loadImage("stage8.png");
+  stage9=loadImage("stage9.png");
+  stage11=loadImage("stage11.png");
+}
+void draw() {
+  background(255);
+  image(bkgrd, 0, 0, 800, 800);
+  text(myText, 400, 100, width/1.3, height/2);
+  text("1:OWL", 400, 480);
+  text("2:BEAVER", 600, 480);
+  text("3:BAT", 400, 680);
+  text("4:UNICORN", 600, 680);
+  speed+=2;
+  noStroke();
+  image(testTube, -200, 100);
+
+  ellipse(207, 713, 125, 125);
+  fill(0);
+  rectMode(CORNER);
+  rect(145, 650, 124, 52);
+  fill(0);
+  noStroke();
+  image(potion, -200, speed);
+  if (speed>=600) {
+    speed=0;
+    a+=30;
+  }
+  rectMode(CENTER);
+  rect(207, 650-a, 125, 150+a);
+  if (a>=170) {
+    a=0;
+  }
+  image(transparency, -200, 100);
+  image(graduation, -200, 100);
+  //if (mouseX>=170&&mouseX<=275&&mouseY>=18&&mouseY<=80) {
+  //  stroke(255);
+  //  strokeWeight(5);
+  //  line(mouseX, mouseY, 820-mouseX, 700);
+  //ellipse(420,660,40,40);
+  //noFill();
+  //stroke(255);
+  //strokeWeight(4);
+  //}
+  println(mouseX);
+  println(mouseY);
+  if (mouseX>=380&&mouseX<=460&&mouseY>=420&&mouseY<=500) {
+
+    image(owl, 290, 400, 240, 200);
+  }
+  if (mouseX>=500&&mouseX<=580&&mouseY>=420&&mouseY<=500) {
+
+    image(beaver, 520, 400, 240, 200);
+  }
+  if (mouseX>=380&&mouseX<=460&&mouseY>=620&&mouseY<=680) {
+
+    image(bat, 280, 600, 240, 200);
+  }
+  if (mouseX>=500&&mouseX<=580&&mouseY>=620&&mouseY<=680) {
+
+    image(unicorn, 510, 600, 240, 200);
+  }
+  fireSpeed1=fireSpeed1+0.6;
+  fireSpeed2=fireSpeed2+0.8;
+  fireSpeed3=fireSpeed3+0.5;
+  fireSpeed4=fireSpeed4+1;
+  fireSpeed5=fireSpeed5+1.2;
+  fireSpeed6=fireSpeed6+0.9;
+  fireSpeed7=fireSpeed7+0.5;
+  fireSpeed8=fireSpeed8+1;
+  fireSpeed9=fireSpeed9+1.2;
+  fireSpeed10=fireSpeed10+0.9;
+  fireplus=random(-400, 400);
+  fireplusmini=random(0, 10);
+  if (stage == 2) {
+    image(bkgrdowl, 0, 0);
+
+    dragon();
+    if (mouseX >= 10 && mouseX<100 && mouseY >= 300 && mouseY <=500) {
+      stage=6;
+    }
+  }
+  if (stage == 3) {
+    image(bkgrdbeaver, 0, 0);
+    dragon();
+    if (mouseX >= 10 && mouseX<100 && mouseY >= 300 && mouseY <=500) {
+      stage=6;
+    }
+  }
+  if (stage == 4) {
+    image(bkgrdbat, 0, 0);
+    dragon();
+    if (mouseX >= 10 && mouseX<100 && mouseY >= 300 && mouseY <=500) {
+      stage=6;
+    }
+  }
+  if (stage == 5) {
+    image(bkgrdunicorn, 0, 0);
+    dragon();
+    if (mouseX >= 10 && mouseX<100 && mouseY >= 300 && mouseY <=500) {
+      stage=6;
+    }
+  }
+  if (stage == 6) {
+    image(stage6, 0, 0);
+    minim = new Minim(this);
+    player = minim.loadFile("bubble.mp3", 2048);
+    player.play();
+  }
+  if (stage == 7) {
+    image(stage7, 0, 0);
+  }
+  if (stage == 8) {
+    image(stage8, 0, 0);
+  }
+  if (stage == 9) {
+    image(stage9, 0, 0);
+  }
+  if (stage == 10) {
+    image(stage10, 0, 0);
+  }
+  if (stage == 11) {
+    image(stage11, 0, 0);
+  }
+}
+void keyPressed() {
+  if (keyCode == BACKSPACE) {
+    if (myText.length() > 0) {
+      myText = myText.substring(0, myText.length()-1);
+    }
+  } else if (keyCode == DELETE) {
+    myText = "";
+  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+    myText = myText + key;
+  }
+  if (key == '1') {
+    stage = 2 ;
+    println(myText);
+  } 
+  if (key == '2') {
+    stage = 3 ;
+  }
+  if (key == '3') {
+    stage = 4 ;
+  } 
+  if (key == '4') {
+    stage = 5 ;
+    background(255, 0, 0);
+  }
+  if (key == '5') {
+    stage = 7 ;
+    println(myText);
+  } 
+  if (key == '6') {
+    stage = 8 ;
+  }
+  if (key == '7') {
+    stage = 9 ;
+  } 
+  if (key == '8') {
+    stage = 11 ;
+    background(255, 0, 0);
+  }
+}
+void dragon() {
+  float firePosX1;
+  float firePosY1;
+  float firePosX2;
+  float firePosY2;
+  float firePosX3;
+  float firePosY3;
+  float firePosX4;
+  float firePosY4;
+  float firePosX5;
+  float firePosY5;
+  float firePosX6;
+  float firePosY6;
+  float firePosX7;
+  float firePosY7;
+  float firePosX8;
+  float firePosY8;
+  float firePosX9;
+  float firePosY9;
+  float firePosX10;
+  float firePosY10;
+
+
+
+  //int randomspeed=random(0, 10);
+  //int randomPos=random(-40, 40);
+
+
+  firePosX1=fireSpeed1;
+  firePosY1=200+fireSpeed1;
+  firePosX2=2*fireSpeed2;
+  firePosY2=200-fireSpeed2;
+  firePosX3=0.5*fireSpeed3;
+  firePosY3=200+fireSpeed3;  
+  firePosX4=4*fireSpeed4;
+  firePosY4=200+fireSpeed4;
+  firePosX5=5*fireSpeed5;
+  firePosY5=200-fireSpeed5;
+  firePosX6=1.5*fireSpeed6;
+  firePosY6=200;
+  firePosX7=0.5*fireSpeed7;
+  firePosY7=200+fireSpeed7;  
+  firePosX8=3*fireSpeed8;
+  firePosY8=200-fireSpeed8;
+  firePosX9=5*fireSpeed9;
+  firePosY9=200-fireSpeed9;
+  firePosX10=2*fireSpeed10;
+  firePosY10=200+fireSpeed10;
+
+  //PosX[0] += 20;
+  //PosY[0] += 20;
+  image(flame, firePosX1, firePosY1, 100, 100);
+  image(flame, firePosX2, firePosY2, 100, 100);
+  image(flame, firePosX3, firePosY3, 100, 100);
+  image(flame, firePosX4, firePosY4, 100, 100);
+  image(flame, firePosX5, firePosY5, 100, 100);
+  image(flame, firePosX6, firePosY6, 100, 100);
+  image(flame, firePosX7, firePosY7, 100, 100);
+  image(flame, firePosX8, firePosY8, 100, 100);
+  image(flame, firePosX9, firePosY9, 100, 100);
+  image(flame, firePosX10, firePosY10, 100, 100);
+  image(wizard, mouseX, mouseY, 100, 100);
+  //println(firePosX1, firePosX2);
+
+
+  //for (int i = 0; i < PosX.length; i++)
+  //{
+  //  if (PosX[i] == mouseX)
+  //  {
+  //  }
+  //}
+  //if (mouseX==firePosX1||mouseX==firePosX2||mouseX==firePosX3||mouseX==firePosX4||mouseX==firePosX5||mouseX==firePosX6||mouseX==firePosX7||mouseX==firePosX8||mouseX==firePosX9||mouseX==firePosX10) {
+  //  if (mouseY==firePosY1||mouseY==firePosY2||mouseY==firePosY3||mouseY==firePosY4||mouseY==firePosY5||mouseY==firePosY6||mouseY==firePosY7||mouseY==firePosY8||mouseY==firePosY9||mouseY==firePosY10)
+  //    {stage=10;
+  //  }
+  //}
+
+  if (mouseX>=firePosX1-20&&mouseX<=firePosX1+20) {
+    if (mouseY>=firePosY1-20&&mouseY<=firePosY1+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX2-20&&mouseX<=firePosX2+20) {
+    if (mouseY>=firePosY2-20&&mouseY<=firePosY2+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX3-20&&mouseX<=firePosX3+20) {
+    if (mouseY>=firePosY3-20&&mouseY<=firePosY3+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX4-20&&mouseX<=firePosX4+20) {
+    if (mouseY>=firePosY4-20&&mouseY<=firePosY4+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX5-20&&mouseX<=firePosX5+20) {
+    if (mouseY>=firePosY5-20&&mouseY<=firePosY5+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX6-20&&mouseX<=firePosX6+20) {
+    if (mouseY>=firePosY6-20&&mouseY<=firePosY6+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX7-20&&mouseX<=firePosX7+20) {
+    if (mouseY>=firePosY7-20&&mouseY<=firePosY7+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX8-20&&mouseX<=firePosX8+20) {
+    if (mouseY>=firePosY8-20&&mouseY<=firePosY8+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX9-20&&mouseX<=firePosX9+20) {
+    if (mouseY>=firePosY9-20&&mouseY<=firePosY9+20) {
+      stage=10;
+    }
+  }
+  if (mouseX>=firePosX10-20&&mouseX<=firePosX10+20) {
+    if (mouseY>=firePosY10-20&&mouseY<=firePosY10+20) {
+      stage=10;
+    }
+  }
+
+  fill(255);
+  noStroke();
+  //image(fire,firePosX,firePosY,20,20);
+}
